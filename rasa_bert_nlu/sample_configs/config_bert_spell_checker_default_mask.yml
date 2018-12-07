@@ -1,0 +1,9 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_bert"
+- name: "intent_featurizer_bert"
+  spell_checker: "mask"
+  spell_checker_score: 2.1
+  BERT_BASE_DIR: "./bert_pretrain_model/chinese_L-12_H-768_A-12/"
+  mul_similar_matrix: True

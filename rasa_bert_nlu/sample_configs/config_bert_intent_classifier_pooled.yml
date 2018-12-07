@@ -1,0 +1,13 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_bert"
+- name: "intent_featurizer_bert"
+  pooled_output: True
+  spell_checker: None
+- name: "intent_classifier_bert_keras"
+  pooled_output: True
+  num_hidden_layers: 0
+  epoch: 50
+  learning_rate: 0.001
+  valid_rate: 0.2

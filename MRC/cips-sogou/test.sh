@@ -1,0 +1,14 @@
+python run_squad.py \
+  --vocab_file=./checkpoints/chinese_L-12_H-768_A-12/vocab.txt \
+  --bert_config_file=./checkpoints/chinese_L-12_H-768_A-12/bert_config.json \
+  --init_checkpoint=./checkpoints/DRCD/model.ckpt-13467 \
+  --do_train=False \
+  --train_file=./data/DRCD/simple_DRCD_training.json \
+  --do_predict=True \
+  --predict_file=./data/DRCD/simple_DRCD_dev.json \
+  --train_batch_size=4 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=2.0 \
+  --max_seq_length=384 \
+  --doc_stride=128 \
+  --output_dir=./checkpoints/DRCD 

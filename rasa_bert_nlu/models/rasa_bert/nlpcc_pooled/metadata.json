@@ -1,0 +1,51 @@
+{
+    "language": "zh",
+    "pipeline": [
+        {
+            "BERT_BASE_DIR": "./bert_pretrain_model/chinese_L-12_H-768_A-12/",
+            "max_seq_length": 128,
+            "name": "tokenizer_bert",
+            "vocab_file": "./bert_pretrain_model/chinese_L-12_H-768_A-12/vocab.txt",
+            "class": "rasa_nlu.tokenizers.bert_tokenizer.BertTokenizer"
+        },
+        {
+            "BERT_BASE_DIR": "./bert_pretrain_model/chinese_L-12_H-768_A-12/",
+            "max_seq_length": 128,
+            "layer_indexes": [
+                -1
+            ],
+            "pooled_output": true,
+            "spell_checker": "None",
+            "mul_similar_matrix": true,
+            "spell_checker_score": 1,
+            "sentence_embedding_type": "pooled",
+            "name": "intent_featurizer_bert",
+            "class": "rasa_nlu.featurizers.bert_featurizer.BertFeaturizer"
+        },
+        {
+            "is_training": true,
+            "fine_turing": false,
+            "pooled_output": true,
+            "num_hidden_layers": 0,
+            "hidden_size": 768,
+            "max_seq_length": 128,
+            "batch_size": 128,
+            "epoch": 50,
+            "learning_rate": 0.001,
+            "lr_decay": 0,
+            "droprate": 0.2,
+            "loss": "categorical_crossentropy",
+            "optimizer": "Adam",
+            "activation": "relu",
+            "valid_rate": 0.2,
+            "regularize_rate": 0.01,
+            "early_stop_patience": 5,
+            "name": "intent_classifier_bert_keras",
+            "classifier_file": "/home1/shenxing/rasa_bert_nlu/models/rasa_bert/nlpcc_pooled/intent_classifier_bert_keras.h5",
+            "class": "rasa_nlu.classifiers.bert_intent_classifier.BertKerasIntentClassfier"
+        }
+    ],
+    "training_data": "training_data.json",
+    "trained_at": "20190129-212747",
+    "rasa_nlu_version": "0.14.0a1"
+}

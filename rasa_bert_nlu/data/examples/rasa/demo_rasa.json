@@ -1,0 +1,23 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "听说塞尔达很好玩",
+        "intent": "game",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "塞尔达",
+            "entity": "Game"
+          }
+        ]
+      },
+      {
+        "text": "你好",
+        "intent": "greet",
+        "entities": []
+      }
+    ]
+  }
+}

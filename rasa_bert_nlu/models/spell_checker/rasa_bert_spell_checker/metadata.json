@@ -1,0 +1,29 @@
+{
+    "language": "zh",
+    "pipeline": [
+        {
+            "BERT_BASE_DIR": "./bert_pretrain_model/chinese_L-12_H-768_A-12/",
+            "max_seq_length": 128,
+            "name": "tokenizer_bert",
+            "vocab_file": "./bert_pretrain_model/chinese_L-12_H-768_A-12/vocab.txt",
+            "class": "rasa_nlu.tokenizers.bert_tokenizer.BertTokenizer"
+        },
+        {
+            "BERT_BASE_DIR": "./bert_pretrain_model/dialog_model/",
+            "max_seq_length": 128,
+            "layer_indexes": [
+                -1
+            ],
+            "pooled_output": false,
+            "spell_checker": "lm",
+            "mul_similar_matrix": true,
+            "spell_checker_score": 1.0,
+            "sentence_embedding_type": "pooled",
+            "name": "intent_featurizer_bert",
+            "class": "rasa_nlu.featurizers.bert_featurizer.BertFeaturizer"
+        }
+    ],
+    "training_data": "training_data.json",
+    "trained_at": "20190122-180353",
+    "rasa_nlu_version": "0.14.0a1"
+}

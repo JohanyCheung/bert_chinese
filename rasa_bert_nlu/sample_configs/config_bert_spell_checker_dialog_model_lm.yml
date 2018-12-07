@@ -1,0 +1,9 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_bert"
+- name: "intent_featurizer_bert"
+  spell_checker: "lm"
+  spell_checker_score: 1.0
+  BERT_BASE_DIR: "./bert_pretrain_model/dialog_model/"
+  mul_similar_matrix: True

@@ -1,0 +1,8 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_bert"
+- name: "intent_featurizer_bert"
+  spell_checker: "lm",
+  pooled_output: True,
+  sentence_embedding_type: pooled
