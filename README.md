@@ -14,7 +14,7 @@
 
 ## 情感分析
 
-[Sentiment Analysis with BERT](./sentiment-analysis/Sentiment Analysis with BERT/README.md)
+[Sentiment Analysis with BERT](./sentiment-analysis/Sentiment_Analysis_with_BERT/README.md)
 
 [基于BERT 汽车行业用户观点主题及情感识别](./sentiment-analysis/汽车行业用户观点主题及情感识别/README.md)
 
