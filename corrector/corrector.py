@@ -6,6 +6,7 @@ from pytorch_pretrained_bert import BertTokenizer, BertForMaskedLM
 tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
 model = BertForMaskedLM.from_pretrained('bert-base-chinese')
 model.eval()
+
 # 加载tokenizer, model
 
 
@@ -41,12 +42,12 @@ def correct(sentence):
     for i, char in enumerate(sentence):
         org_char_pinyin = get_pinyin(char)
         list_maybe_right = predict_error_char(sentence, i+1)
-
+        if char in list_maybe_right:
+            continue
         for c in list_maybe_right:
-            if get_pinyin(c) == org_char_pinyin:
-                if c != char:
-                    correct_result.append([i, c])
-                break
+            # if get_pinyin(c) == org_char_pinyin:
+            correct_result.append([i, c])
+            break
     return correct_result
 
 
@@ -65,6 +66,8 @@ def get_pinyin(char):
 
 
 if __name__ == '__main__':
-    pass
+    print(correct("遇到逆竟时，我们必须勇于面对，而且要愈挫愈勇，这样我们才能朝著成功之路前进。"))
+    print(correct("贝多芬是一位家喻户晓的音乐才子，但在成为第一位音乐家之前，经过了一场风雨澈底的改变了他的命运，也使他的耳朵渐渐的听不到了。"))
+    print(correct("刘墉在三岁过年时，全家陷入火海，把家烧得面目全飞、体无完肤。"))
 
 
