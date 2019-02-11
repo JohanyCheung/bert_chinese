@@ -32,8 +32,12 @@ logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(messa
                     datefmt = '%m/%d/%Y %H:%M:%S',
                     level = logging.INFO)
 logger = logging.getLogger(__name__)
-
+# modified from https://github.com/huggingface/pytorch-pretrained-BERT/blob/master/examples/run_squad.py
 class CmrcExample(object):
+    """
+    A single training/test example for the cmrc2018 dataset.
+    For examples without an answer, the start and end position are -1.
+    """
 
     def __init__(self,
                  qas_id,
@@ -70,6 +74,7 @@ class CmrcExample(object):
 
 
 class InputFeatures(object):
+    """A single set of features of data."""
 
     def __init__(self,
                  unique_id,
@@ -99,7 +104,7 @@ class InputFeatures(object):
 
 
 def read_cmrc_examples(input_file, is_training, version_2_with_negative, tokenizer):
-
+    """Read a cmrc json file into a list of CmrcExample."""
     with open(input_file, "r", encoding='utf-8') as reader:
         input_data = json.load(reader)
     def find_sub_list(sl, l):
@@ -111,7 +116,7 @@ def read_cmrc_examples(input_file, is_training, version_2_with_negative, tokeniz
                 results.append((ind, ind+sll-1))
         return results
     examples = []
-
+    #input_data = input_data[:10]
     for entry in tqdm(input_data):
             paragraph_text = entry["context_text"]
             doc_tokens = tokenizer.tokenize(paragraph_text)
@@ -324,7 +329,8 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                     logger.info("end_position: %d" % (end_position))
                     logger.info(
                         "answer: %s" % (answer_text))
-
+            else:
+                print("loading examples to features :{}/{}".format(example_index,len(examples) ), end='\r')
             features.append(
                 InputFeatures(
                     unique_id=unique_id,
