@@ -32,6 +32,8 @@
 
 [Dureader](./MRC/Dureader/README.md)
 
+[cmrc2018](./MRC/cmrc2018/README.md)
+
 
 
 ## nlu
